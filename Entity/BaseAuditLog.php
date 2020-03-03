@@ -42,9 +42,29 @@ abstract class BaseAuditLog
     protected $user;
 
     /**
+     * @var string
+     */
+    protected $email;
+
+    /**
      * @var String
      */
     protected $ip;
+
+    /**
+     * @var integer
+     */
+    protected $port;
+
+    /**
+     * @var string
+     */
+    protected $host;
+
+    /**
+     * @var string
+     */
+    protected $userAgent;
 
     /**
      * @var String
@@ -177,5 +197,69 @@ abstract class BaseAuditLog
         $oClass = new \ReflectionClass ('Psr\Log\LogLevel');
 
         return $oClass->getConstants();
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPort()
+    {
+        return $this->port;
+    }
+
+    /**
+     * @param int $port
+     */
+    public function setPort($port)
+    {
+        $this->port = $port;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHost()
+    {
+        return $this->host;
+    }
+
+    /**
+     * @param string $host
+     */
+    public function setHost($host)
+    {
+        $this->host = $host;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserAgent()
+    {
+        return $this->userAgent;
+    }
+
+    /**
+     * @param string $userAgent
+     */
+    public function setUserAgent($userAgent)
+    {
+        $this->userAgent = $userAgent;
     }
 }

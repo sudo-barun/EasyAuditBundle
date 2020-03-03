@@ -77,6 +77,8 @@ class Configuration implements ConfigurationInterface
                 ->variableNode('doctrine_entities')->defaultValue(array())->end()
                 ->variableNode('events')->defaultValue(array())->end()
                 ->variableNode('custom_resolvers')->defaultValue(array())->end()
+                ->scalarNode('email_property')->defaultValue(null)->end()
+                ->variableNode('static_field_values')->defaultValue(array())->end()
             ->end();
     }
 

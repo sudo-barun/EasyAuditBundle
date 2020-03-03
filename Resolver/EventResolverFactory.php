@@ -39,8 +39,12 @@ class EventResolverFactory extends UserAwareComponent
 
         $eventLog->setTypeId($eventName);
         $eventLog->setIp($this->getClientIp());
+        $eventLog->setPort($this->getPort());
+        $eventLog->setHost($this->getHost());
+        $eventLog->setUserAgent($this->getUserAgent());
         $eventLog->setEventTime(new \DateTime());
         $this->setUser($eventLog);
+        $this->setStaticValues($eventLog);
 
         return $eventLog;
     }
@@ -128,6 +132,12 @@ class EventResolverFactory extends UserAwareComponent
         }
 
         $entity->setUser($this->getSettablePropertyValue($userProperty, $user));
+
+        $emailProperty = $this->container->getParameter('xiidea.easy_audit.email_property');
+
+        if ($emailProperty !== null) {
+            $entity->setEmail($this->getSettablePropertyValue($emailProperty, $user));
+        }
     }
 
 
@@ -140,6 +150,62 @@ class EventResolverFactory extends UserAwareComponent
             return $this->container->get('request')->getClientIp();
         } catch (\Exception $e) {
             return "";
+        }
+    }
+
+    /**
+     * @return string
+     */
+    protected function getPort()
+    {
+        try {
+            return $this->container->get('request')->getPort();
+        } catch (\Exception $e) {
+            return "";
+        }
+    }
+
+    /**
+     * @return string
+     */
+    protected function getHost()
+    {
+        try {
+            return $this->container->get('request')->getHost();
+        } catch (\Exception $e) {
+            return "";
+        }
+    }
+
+    /**
+     * @return string
+     */
+    protected function getUserAgent()
+    {
+        try {
+            return $this->container->get('request')->headers->get('User-Agent');
+        } catch (\Exception $e) {
+            return "";
+        }
+    }
+
+    protected function setStaticValues($entity)
+    {
+        $staticFieldValues = $this->container->getParameter('xiidea.easy_audit.static_field_values');
+
+        if (count($staticFieldValues)) {
+            $this->setEntityProperties($entity, $staticFieldValues);
+        }
+    }
+
+    function setEntityProperties($entity, array $array)
+    {
+        $refl = new \ReflectionClass($this->getParameter('entity_class'));
+
+        foreach ($array as $propertyToSet => $value) {
+            $property = $refl->getProperty($propertyToSet);
+            $property->setAccessible(true);
+            $property->setValue($entity, $value);
         }
     }
 

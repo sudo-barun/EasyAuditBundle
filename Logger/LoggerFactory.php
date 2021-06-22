@@ -11,13 +11,14 @@
 
 namespace Xiidea\EasyAuditBundle\Logger;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Xiidea\EasyAuditBundle\Entity\BaseAuditLog;
 use Xiidea\EasyAuditBundle\Exception\InvalidServiceException;
 use Xiidea\EasyAuditBundle\Traits\ServiceContainerGetterMethods;
 
-class LoggerFactory extends ContainerAware
+class LoggerFactory
 {
+    use ContainerAwareTrait;
     use ServiceContainerGetterMethods;
 
     /** @var LoggerInterface[] */

@@ -13,12 +13,13 @@ namespace Xiidea\EasyAuditBundle\Subscriber;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Xiidea\EasyAuditBundle\Events\DoctrineEntityEvent;
 use Xiidea\EasyAuditBundle\Events\DoctrineEvents;
 
-class DoctrineSubscriber extends ContainerAware implements EventSubscriber
+class DoctrineSubscriber implements EventSubscriber
 {
+    use ContainerAwareTrait;
     /**
      * @var array
      */

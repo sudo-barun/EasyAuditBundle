@@ -144,7 +144,7 @@ class EntityEventResolverTest extends \PHPUnit_Framework_TestCase {
             ->disableOriginalConstructor()
             ->getMock();
         $this->dispatcher = $this
-            ->getMockBuilder('Symfony\Component\EventDispatcher\EventDispatcherInterface')
+            ->getMockBuilder('Symfony\Contracts\EventDispatcher\EventDispatcherInterface')
             ->disableOriginalConstructor()
             ->getMock();
         $this->doctrine = $this

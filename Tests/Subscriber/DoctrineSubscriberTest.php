@@ -121,7 +121,7 @@ class DoctrineSubscriberTest extends \PHPUnit_Framework_TestCase
 
     private function initializeDispatcher()
     {
-        $dispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcherInterface');
+        $dispatcher = $this->getMock('Symfony\Contracts\EventDispatcher\EventDispatcherInterface');
 
         $this->container->expects($this->at(1))
             ->method('get')

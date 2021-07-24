@@ -11,7 +11,7 @@
 
 namespace Xiidea\EasyAuditBundle\Resolver;
 
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 use Xiidea\EasyAuditBundle\Common\UserAwareComponent;
 use Xiidea\EasyAuditBundle\Resolver\UserEventCommand\AuthenticationFailedCommand;
 use Xiidea\EasyAuditBundle\Resolver\UserEventCommand\ImplicitLoginCommand;

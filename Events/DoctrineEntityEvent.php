@@ -11,7 +11,7 @@
 namespace Xiidea\EasyAuditBundle\Events;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 class DoctrineEntityEvent extends Event
 {

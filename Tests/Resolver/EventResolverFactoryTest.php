@@ -12,7 +12,7 @@
 namespace Xiidea\EasyAuditBundle\Tests\Resolver;
 
 
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 use Xiidea\EasyAuditBundle\Resolver\DefaultEventResolver;
 use Xiidea\EasyAuditBundle\Resolver\EventResolverFactory;
 use Xiidea\EasyAuditBundle\Tests\Fixtures\Common\AuditObjectResolver;

@@ -28,9 +28,9 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('xiidea_easy_audit');
 
-        $rootNode = $treeBuilder->root('xiidea_easy_audit');
+        $rootNode = $treeBuilder->getRootNode();
 
         $this->addRequiredConfigs($rootNode);
         $this->addDefaultServices($rootNode);

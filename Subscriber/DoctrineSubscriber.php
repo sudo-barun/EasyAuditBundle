@@ -64,8 +64,9 @@ class DoctrineSubscriber implements EventSubscriber
             return;
         }
 
-        $this->container->get('event_dispatcher')->dispatch($eventName,
-            new DoctrineEntityEvent($args)
+        $this->container->get('event_dispatcher')->dispatch(
+            new DoctrineEntityEvent($args),
+            $eventName
         );
     }
 
